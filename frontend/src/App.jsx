@@ -13,7 +13,7 @@ function App() {
     fetchData();
   }, []);
   return (
-    <div className="App">
+    <div>
       <Router>
         <Switch>
           <Route exact path={"/create"} component={Create} />
