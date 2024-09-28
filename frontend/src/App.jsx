@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import Create from "./create/Create";
@@ -7,13 +7,6 @@ import Buy from "./website/Buy";
 import Contact from "./website/Contact";
 
 function App() {
-  useEffect(() => {
-    async function fetchData() {
-      const { data } = axios.get("http://localhost:8000/");
-      console.log(data);
-    }
-    fetchData();
-  }, []);
   return (
     <div>
       <Router>
