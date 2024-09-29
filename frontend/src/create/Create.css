@@ -7,10 +7,10 @@
   margin-top: 25px;
   margin-left: 20px;
   margin-bottom: 35px;
+  margin-right: 20px;
   padding: 0 10px;
   font-family: 'Verdana';
-  width: 100%;
-  max-width: 1070px;
+  width: auto;
 }
 
 .title {
@@ -30,7 +30,7 @@
 }
 
 .MuiTextField-root {
-  width: 73%;
+  width: 75%;
 }
 
 input[type="text"], .MuiTextField-root {
@@ -41,7 +41,7 @@ input[type="text"], .MuiTextField-root {
 }
 
 .generate-button {
-  width: 27%;
+  width: 25%;
   height: 56px;
   background-color: #1976D2; 
   color: white;
