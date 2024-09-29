@@ -8,9 +8,14 @@ import Contact from "./website/Contact";
 export const WebsiteContext = createContext();
 
 function App() {
-  const [websiteData, setWebsiteData] = useState({});
+  const [websiteData, setWebsiteData] = useState({
+    primaryColor: "#000000",   // Default color
+    productImages: [],         // Default empty array for images
+    productPrices: {}          // Default empty object for prices
+  });
+
   return (
-    <WebsiteContext.Provider value={{websiteData, setWebsiteData}}>
+    <WebsiteContext.Provider value={{ websiteData, setWebsiteData }}>
       <div>
         <Router>
           <Switch>

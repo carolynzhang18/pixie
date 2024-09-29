@@ -6,40 +6,65 @@ import { WebsiteContext } from '../App';
 const ImageUpload = () => {
   const { websiteData, setWebsiteData } = useContext(WebsiteContext);
   const [previewImages, setPreviewImages] = useState([]);
+  const [imagePrices, setImagePrices] = useState({});
 
   async function handleImageUpload(fileList) {
     const files = Array.from(fileList);
     
     const filePromises = files.map((file) => {
-      // Return a promise per file
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
-        reader.onload = async () => {
-          try {
-            resolve(reader.result); // Resolve with the base64 data URL
-          } catch (err) {
-            reject(err);
-          }
-        };
-        reader.onerror = (error) => {
-          reject(error);
-        };
-        reader.readAsDataURL(file); // Convert to base64
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
       });
     });
 
     const convertedImages = await Promise.all(filePromises);
-    setPreviewImages(convertedImages); // Show preview images
-    setWebsiteData({ ...websiteData, productImages: convertedImages }); // Save to context for final display
+    const updatedPreviewImages = [...previewImages, ...convertedImages];
+
+    // Initialize price for each new image as empty
+    const updatedPrices = { ...imagePrices };
+    updatedPreviewImages.forEach((image, idx) => {
+      if (!(idx in updatedPrices)) {
+        updatedPrices[idx] = ""; // Initialize price as an empty string
+      }
+    });
+
+    setPreviewImages(updatedPreviewImages);
+    setImagePrices(updatedPrices);
+
+    // Debugging log to ensure productPrices is updated
+    setWebsiteData({
+      ...websiteData,
+      productImages: updatedPreviewImages, // Save images to context
+      productPrices: updatedPrices,        // Save prices to context
+    });
+
+    console.log("Updated WebsiteContext after image upload:", {
+      ...websiteData,
+      productPrices: updatedPrices,
+    });
   }
 
+  const handlePriceChange = (idx, price) => {
+    const updatedPrices = { ...imagePrices, [idx]: price };
+    setImagePrices(updatedPrices);
+
+    // Save the updated prices in WebsiteContext
+    setWebsiteData({
+      ...websiteData,
+      productPrices: updatedPrices,
+    });
+
+    // Log to check if productPrices is properly updated
+    console.log("Updated productPrices:", updatedPrices);
+  };
+
   return (
-    <div className="option-section">
-      <h3 className="option-title">Upload Product Images</h3>
-      <IconButton
-        variant="contained"
-        component="label"
-      >
+    <div className="image-upload-container">
+      <h3 className="option-title">Upload Product Images and Set Prices</h3>
+      <IconButton variant="contained" component="label">
         <UploadIcon />
         <input
           type="file"
@@ -49,11 +74,17 @@ const ImageUpload = () => {
         />
       </IconButton>
 
-      {/* Image Preview Grid */}
-      <div className="grid grid-cols-4 gap-8 p-8">
+      {/* Image Grid with Price Input */}
+      <div className="image-upload-grid">
         {previewImages?.map((image, idx) => (
-          <div key={idx} className="relative w-48 h-48 overflow-hidden">
-            <img src={image} alt="preview" className="absolute top-0 left-0 w-full h-full object-cover" />
+          <div key={idx} className="image-upload-item">
+            <img src={image} alt="product" />
+            <input
+              type="text"
+              placeholder="Enter price"
+              value={imagePrices[idx] || ""}
+              onChange={(e) => handlePriceChange(idx, e.target.value)}
+            />
           </div>
         ))}
       </div>
