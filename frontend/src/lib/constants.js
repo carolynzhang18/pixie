@@ -9,7 +9,7 @@ export const OPTIONS = [
     },
     {
       title: "Color Scheme",
-      values: ["Vibrant", "Dark", "Pastel", "Cool", "Warm", "Monochrome", "Earth", "Monochrome", "Neutral"],
+      values: ["Vibrant", "Dark", "Pastel", "Cool-toned", "Warm-toned", "Monochrome", "Earthy", "Neutral"],
     },
     {
       title: "Mood",

@@ -27,7 +27,7 @@ function Create() {
   
     // Customize the prompt by adding hidden content
     const userPrompt = promptRef.current.value;
-    const customizedPrompt = `${userPrompt}. Design a 1792x1024 background banner for an online store website. Leave empty blank space in the center of the banner.`;
+    const customizedPrompt = `${userPrompt}. Design a 1792x1024 background themed to this. Leave open, uncluttered space in the center of the banner.`;
 
     console.log(customizedPrompt);
   
