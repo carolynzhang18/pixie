@@ -1,18 +1,18 @@
 export const OPTIONS = [
     {
       title: "Style",
-      values: ["Minimalistic", "Modern", "Elegant", "Cute", "Pretty", "Y2K"],
+      values: ["Minimalistic", "Modern", "Elegant", "Cute", "Boho", "Y2K", "Vintage", "Luxurious", "Artistic"],
     },
     {
       title: "Field",
-      values: ["Business", "Technology", "Finance", "Product"],
+      values: ["Business", "Technology", "Finance", "Product", "E-commerce", "Fashion", "Handmade", "Beauty"],
     },
     {
       title: "Color Scheme",
-      values: ["Vibrant", "Dark", "Pastel", "Cool", "Warm"],
+      values: ["Vibrant", "Dark", "Pastel", "Cool", "Warm", "Monochrome", "Earth", "Monochrome", "Neutral"],
     },
     {
-      title: "Audience",
-      values: ["Children", "Adults", "Young adults"],
+      title: "Mood",
+      values: ["Playful", "Professional", "Serene", "Inviting", "Sophisticated", "Energetic", "Relaxing", "Bold"],
     }
   ];
