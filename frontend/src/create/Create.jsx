@@ -17,6 +17,7 @@ function Create() {
   const promptRef = useRef();  // Use a ref for the input field
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const [_, setAddress] = useState("");
   
   // Function to append options to the prompt
   const appendPrompt = (word) => {
@@ -53,6 +54,15 @@ function Create() {
   return (
     <div className="App">
       <h1 className="title">Create Your Website!</h1>
+
+      <div className="input-container mt-2 mb-7">
+        <TextField 
+          label="Store name"
+          variant="outlined" 
+          fullWidth
+          onChange={(e) => setWebsiteData({...websiteData, name: e.target.value})}
+        />
+      </div>
       
       {/* Input Section */}
       <div className="input-container">
@@ -85,14 +95,29 @@ function Create() {
         })}
       </div>
 
-      <ImageUpload />
-
       {/* Display generated image */}
       <div className="image-container">
         {!loading && url !== "" && <img src={url} alt="generated" className="generated-image" />}
         {loading && <CircularProgress />}
       </div>
-      {url && <Button 
+
+      <ImageUpload />
+
+      <h3 className="option-title mt-3">Set Up Midnight</h3>
+      <div className="input-container mt-2 mb-7">
+        <TextField 
+          label="Midnight address" 
+          variant="outlined" 
+          fullWidth
+          onChange={(e) => {
+            setAddress(e.target.value);
+            setWebsiteData({ ...websiteData, address: e.target.value });
+          }}
+        />
+      </div>
+
+      {/* {url && address && <Button  */}
+      {<Button 
           variant="contained" 
           className="generate-button" 
           onClick={() => history.push("/website")}

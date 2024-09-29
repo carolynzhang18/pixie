@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import { createServer } from "http";
+import { wallet } from "./wallet.js";
 
 const CORS_ALLOW_LIST = [
   "http://localhost:3000",
@@ -19,8 +20,8 @@ app.use(cors(CORS_OPTIONS));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", async (req, res) => {
-  res.status(200).json("hello world");
+wallet.state().subscribe((state) => {
+  console.log(state);
 });
 
 server.listen({ port: 8000 }, () => {

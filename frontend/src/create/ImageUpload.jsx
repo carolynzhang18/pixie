@@ -40,11 +40,6 @@ const ImageUpload = () => {
       productImages: updatedPreviewImages, // Save images to context
       productPrices: updatedPrices,        // Save prices to context
     });
-
-    console.log("Updated WebsiteContext after image upload:", {
-      ...websiteData,
-      productPrices: updatedPrices,
-    });
   }
 
   const handlePriceChange = (idx, price) => {
@@ -57,8 +52,6 @@ const ImageUpload = () => {
       productPrices: updatedPrices,
     });
 
-    // Log to check if productPrices is properly updated
-    console.log("Updated productPrices:", updatedPrices);
   };
 
   return (

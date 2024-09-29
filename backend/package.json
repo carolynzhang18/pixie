@@ -8,6 +8,9 @@
     "start": "nodemon"
   },
   "dependencies": {
+    "@midnight-ntwrk/wallet": "^3.6.3",
+    "@midnight-ntwrk/wallet-api": "^3.4.2",
+    "@midnight-ntwrk/zswap": "^3.0.2",
     "cors": "^2.8.5",
     "express": "^4.21.0",
     "http": "^0.0.1-security"
