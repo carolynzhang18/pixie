@@ -1,7 +1,9 @@
 import Home from "./Home";
-import { websiteData } from "./websiteData";
+import React, { useContext } from "react";
+import { WebsiteContext } from '../App';
 
 const Website = () => {
+  const {websiteData} = useContext(WebsiteContext);
   return (
     <>
       <header className="px-4 font-serif text-xl" role="group" style={{ position: "absolute", top: "5%", color: websiteData.primaryColor, width: "100%" }}>

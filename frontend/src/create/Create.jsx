@@ -1,11 +1,16 @@
 import './Create.css';
 import { TextField, CircularProgress, Button } from '@mui/material';
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
+import { useHistory } from "react-router-dom";
 import OpenAI from "openai";
 import Option from "../components/option"; 
 import { OPTIONS } from "../lib/constants"; 
+import { WebsiteContext } from '../App';
 
 function Create() {
+  const { setWebsiteData } = useContext(WebsiteContext);
+  const history = useHistory();
+
   const openai = new OpenAI({ apiKey: process.env.REACT_APP_OPENAI_APIKEY, dangerouslyAllowBrowser: true });
   
   const promptRef = useRef();  // Use a ref for the input field
@@ -28,6 +33,10 @@ function Create() {
     let image_url = response.data[0].url;
     setUrl(image_url);
     setLoading(false);
+    setWebsiteData({
+      backgroundImage: image_url,
+      primaryColor: "#000000"
+    });
   };
 
   return (
@@ -70,6 +79,13 @@ function Create() {
         {!loading && url !== "" && <img src={url} alt="generated" className="generated-image" />}
         {loading && <CircularProgress />}
       </div>
+      {url && <Button 
+          variant="contained" 
+          className="generate-button" 
+          onClick={() => history.push("/website")}
+        >
+          GO TO WEBSITE!
+        </Button>}
     </div>
   );
 }
