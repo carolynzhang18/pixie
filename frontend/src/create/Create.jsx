@@ -29,7 +29,7 @@ function Create() {
   
     // Customize the prompt by adding hidden content
     const userPrompt = promptRef.current.value;
-    const customizedPrompt = `${userPrompt}. Design a 1792x1024 background themed to this. Leave open, uncluttered space in the center of the banner.`;
+    const customizedPrompt = `${userPrompt}. Design a background banner themed to this product that has a large empty, blank space in the middle of the banner, and no text.`;
 
     console.log(customizedPrompt);
   
@@ -122,7 +122,7 @@ function Create() {
           className="generate-button" 
           onClick={() => history.push("/website")}
         >
-          GO TO WEBSITE!
+          BUILD WEBSITE!
         </Button>}
     </div>
   );

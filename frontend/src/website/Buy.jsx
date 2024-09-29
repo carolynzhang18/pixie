@@ -31,7 +31,7 @@ const Buy = () => {
         <div className="max-w-6xl grid grid-cols-6 gap-8 p-8" id="items">
         {
           items.map((item, idx) => { 
-            total += parseInt(productPrices[item]);
+            total += parseFloat(productPrices[item]);
             return (
             <div key={idx} className="relative w-full">
             <div className="relative w-full h-32 overflow-hidden"

@@ -168,3 +168,7 @@ input[type="text"], .MuiTextField-root {
   margin-bottom: 30px;
 }
 
+.input-container {
+  width: 100%;
+}
+

@@ -13,9 +13,9 @@ const Home = () => {
       <img src={websiteData.backgroundImage} alt="background" style={{ width: "100%" }} />
 
       <div style={{ position: "absolute", width: "100%", verticalAlign: "middle", top: "45%", color: websiteData.primaryColor }}>
-        <h1 className="text-7xl font-serif text-center">{websiteData.name}</h1>
-        <p className="text-xl mt-6" style={{ color: "##285073" }}>{websiteData.description}</p>
-        <button onClick={() => document.getElementById('items')?.scrollIntoView({ behavior: "smooth" })} className="rounded-full p-2 px-8 font-serif mt-8 text-xl" style={{ color: websiteData.primaryColor, backgroundColor: "#fcfeff" }}>
+        <h1 className="text-6xl font-serif text-center">{websiteData.name}</h1>
+        <p className="text-xl" style={{ color: "##285073", marginTop: "-20px" }}>{websiteData.description}</p>
+        <button onClick={() => document.getElementById('items')?.scrollIntoView({ behavior: "smooth" })} className="rounded-full p-2 px-8 font-serif mt-8 text-xl" style={{ color: websiteData.primaryColor, backgroundColor: "#fcfeff", border:" solid black 1px" }}>
           SHOP NOW
         </button>
       </div>
@@ -37,7 +37,7 @@ const Home = () => {
               })}
             >
               {/* Ensure square image */}
-              <img src={image} alt={`Product ${idx + 1}`} className="object-cover w-full h-full" style={{ aspectRatio: '1 / 1' }} />
+              <img src={image} alt={`Product ${idx + 1}`} className="object-cover w-full h-full" style={{ aspectRatio: '1 / 1', border: "solid black 1px" }} />
               {buttonStyles[idx] && 
               <button className="option-button" style={{ paddingLeft: "-10px", position: "absolute", bottom: "5px", right: "5px" }}
                 onClick={() => {
