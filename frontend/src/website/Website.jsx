@@ -12,7 +12,6 @@ const Website = () => {
           <button className="mx-10" onClick={() => { window.location.href="/website/buy" }}>BUY</button>
           <button onClick={() => { window.location.href="/website/contact" }}>CONTACT</button>
         </div>
-
       </header>
       <Home />
     </>

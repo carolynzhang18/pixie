@@ -6,9 +6,10 @@ import OpenAI from "openai";
 import Option from "../components/option"; 
 import { OPTIONS } from "../lib/constants"; 
 import { WebsiteContext } from '../App';
+import ImageUpload from './ImageUpload';
 
 function Create() {
-  const { setWebsiteData } = useContext(WebsiteContext);
+  const { websiteData, setWebsiteData } = useContext(WebsiteContext);
   const history = useHistory();
 
   const openai = new OpenAI({ apiKey: process.env.REACT_APP_OPENAI_APIKEY, dangerouslyAllowBrowser: true });
@@ -42,6 +43,7 @@ function Create() {
     setUrl(image_url);
     setLoading(false);
     setWebsiteData({
+      ...websiteData,
       backgroundImage: image_url,
       primaryColor: "#000000"
     });
@@ -82,6 +84,8 @@ function Create() {
           );
         })}
       </div>
+
+      <ImageUpload />
 
       {/* Display generated image */}
       <div className="image-container">

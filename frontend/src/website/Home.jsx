@@ -16,18 +16,7 @@ const Home = () => {
           </button>
       </div>
       <div className="grid grid-cols-4 gap-8 p-8" id="items">
-        {/* <div><img width="90%" src={websiteData.items[0]} alt="" /></div>
-        <div><img width="80%" src={websiteData.items[1]} alt="" /></div>
-        <div><img width="80%" src={websiteData.items[2]} alt="" /></div>
-        <div><img width="80%" src={websiteData.items[3]} alt="" /></div>
-        <div><img width="90%" src={websiteData.items[0]} alt="" /></div>
-        <div><img width="80%" src={websiteData.items[1]} alt="" /></div>
-        <div><img width="80%" src={websiteData.items[2]} alt="" /></div>
-        <div><img width="80%" src={websiteData.items[3]} alt="" /></div>
-        <div><img width="90%" src={websiteData.items[0]} alt="" /></div>
-        <div><img width="80%" src={websiteData.items[1]} alt="" /></div>
-        <div><img width="80%" src={websiteData.items[2]} alt="" /></div>
-        <div><img width="80%" src={websiteData.items[3]} alt="" /></div> */}
+        {websiteData.productImages?.map((image, idx) => <div key={idx}><img src={image} alt="" /></div>)}
       </div>
     </div>
   );
